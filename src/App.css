@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.app-container {
+  display: flex;
+}
+
+.navbar {
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  height: 100vh;
+}
+
+.navbar-logo h2 {
+  margin-bottom: 20px;
+}
+
+.navbar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.navbar-menu li {
+  margin-bottom: 15px;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.app-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
