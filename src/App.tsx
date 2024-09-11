@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
-import Tables from './pages/Tables';
-import Billing from './pages/Billing';
 import SignIn from './pages/SingIn';
 import Header from './components/Header';
 
 import './App.css';
+import ManagerManagement from './pages/ManagerManagement';
+import ProjectManagement from './pages/ProjectManagement';
+import ReportManagement from './pages/RaportManagement';
+import ManagementLayout from './pages/layouts/ManagementLayout';
 
 const MainLayout = () => {
   return (
@@ -17,9 +19,14 @@ const MainLayout = () => {
         <Navbar />
         <div style={{ flexGrow: 1, padding: '20px' }}>
           <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/tables" element={<Tables />} />
-            <Route path="/billing" element={<Billing />} />
+            {/* Group Management-related routes */}
+            <Route path="/management" element={<ManagementLayout />}>
+              <Route path="manager" element={<ManagerManagement />} />
+              <Route path="project" element={<ProjectManagement />} />
+              <Route path="report" element={<ReportManagement />} />
+            </Route>
+
+            {/* Other routes */}
             <Route path="/" element={<Dashboard />} />
           </Routes>
         </div>
@@ -29,7 +36,6 @@ const MainLayout = () => {
 };
 
 function App() {
-  const location = useLocation();
 
   return (
     <Routes>

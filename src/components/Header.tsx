@@ -1,35 +1,28 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, IconButton, InputBase, Button, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography, IconButton, InputBase, Button, Box, Popper, Paper, List, ListItem, ListItemText, Fade } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { getPageName } from '../business/methods';
 
 const Header = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [open, setOpen] = useState(false);
+    const [placement, setPlacement] = useState<any>('bottom-start');
+
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // Handle Search Click
+    const handleSearchClick = (event : any) => {
+        setAnchorEl(event.currentTarget);
+        setOpen((prev) => !prev);
+    };
 
     const handleSignInClick = () => {
         navigate('/signin');
-    };
-
-    const location = useLocation();
-
-    const getPageName = (path: string) => {
-        switch (path) {
-            case '/dashboard':
-                return 'Dashboard';
-            case '/tables':
-                return 'Tables';
-            case '/billing':
-                return 'Billing';
-            case '/virtual-reality':
-                return 'Virtual Reality';
-            case '/rtl':
-                return 'RTL';
-            default:
-                return 'Dashboard';
-        }
     };
 
     return (
@@ -48,23 +41,45 @@ const Header = () => {
                     </Box>
                 </Box>
 
-                {/* Middle (Search bar) */}
-                <Box sx={{ display: 'flex', alignItems: 'center', width: '300px' }}>
-                    <SearchIcon sx={{ color: '#6C757D', marginRight: '10px' }} />
-                    <InputBase
-                        placeholder="Type here..."
-                        sx={{
-                            width: '100%',
-                            border: '1px solid #ced4da',
-                            borderRadius: '20px',
-                            padding: '5px 15px',
-                            color: '#6C757D',
-                        }}
-                    />
-                </Box>
-
-                {/* Right side (buttons and icons) */}
+                {/* Right side (Search bar and buttons) */}
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    {/* Search Bar */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
+                        <SearchIcon sx={{ color: '#6C757D', marginRight: '10px' }} />
+                        <InputBase
+                            placeholder="Type here..."
+                            onClick={handleSearchClick} // Open dropdown on click
+                            sx={{
+                                width: '200px',
+                                border: '1px solid #ced4da',
+                                borderRadius: '20px',
+                                padding: '5px 15px',
+                                color: '#6C757D',
+                            }}
+                        />
+                        {/* Popper Dropdown */}
+                        <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
+                            {({ TransitionProps }) => (
+                                <Fade {...TransitionProps} timeout={350}>
+                                    <Paper sx={{ mt: 1 }}>
+                                        <List>
+                                            <ListItem>
+                                                <ListItemText primary="Item 1" />
+                                            </ListItem>
+                                            <ListItem>
+                                                <ListItemText primary="Item 2" />
+                                            </ListItem>
+                                            <ListItem>
+                                                <ListItemText primary="Item 3" />
+                                            </ListItem>
+                                        </List>
+                                    </Paper>
+                                </Fade>
+                            )}
+                        </Popper>
+                    </Box>
+
+                    {/* Buttons */}
                     <Button
                         variant="outlined"
                         sx={{

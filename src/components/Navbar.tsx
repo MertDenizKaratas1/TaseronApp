@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Typography, Box } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Typography, Box, Collapse, ListItemButton } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import TableChartIcon from '@mui/icons-material/TableChart';
 import ReceiptIcon from '@mui/icons-material/Receipt';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import { Pages } from '../types/enums';
 import logo from '../assets/logo2.png';
 
 const Navbar = () => {
-
-    const [selectedItem, setSelectedItem] = useState<string>(Pages.Dashboard);
+    const [selectedItem, setSelectedItem] = useState<string>(Pages.ReportPage);
+    const [isManagementOpen, setIsManagementOpen] = useState<boolean>(false);
 
     const handleSelect = (item: string) => {
         setSelectedItem(item);
+    };
+
+    const handleToggleManagement = () => {
+        setIsManagementOpen((prevOpen) => !prevOpen);
     };
 
     return (
@@ -36,77 +42,100 @@ const Navbar = () => {
 
                 {/* Menu Items */}
                 <List sx={{ width: '100%' }}>
-                    <ListItem
-                        component={Link}
-                        to="/dashboard"
-                        onClick={() => handleSelect(Pages.Dashboard)}
-                        sx={{
-                            marginBottom: '10px',
-                            backgroundColor: selectedItem === 'dashboard' ? '#f0f0f0' : 'transparent',
-                            '&:hover': {
-                                backgroundColor: '#f0f0f0',
-                            },
-                        }}
-                    >
+                    {/* Management Section Header */}
+                    <ListItemButton onClick={handleToggleManagement}>
                         <ListItemIcon>
-                            <DashboardIcon sx={{ color: selectedItem === 'dashboard' ? '#D63384' : '#6C757D' }} />
+                            <DashboardIcon sx={{ color: '#6C757D' }} />
                         </ListItemIcon>
                         <ListItemText
-                            primary="Dashboard"
+                            primary="Management"
                             sx={{
-                                color: selectedItem === 'dashboard' ? '#000' : '#6C757D',
-                                fontWeight: selectedItem === 'dashboard' ? 'bold' : 'normal',
+                                color: '#6C757D',
+                                fontWeight: 'bold',
                             }}
                         />
-                    </ListItem>
+                        {isManagementOpen ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
 
-                    <ListItem
-                        component={Link}
-                        to="/tables"
-                        onClick={() => handleSelect(Pages.Tables)}
-                        sx={{
-                            marginBottom: '10px',
-                            backgroundColor: selectedItem === 'tables' ? '#f0f0f0' : 'transparent',
-                            '&:hover': {
-                                backgroundColor: '#f0f0f0',
-                            },
-                        }}
-                    >
-                        <ListItemIcon>
-                            <TableChartIcon sx={{ color: selectedItem === 'tables' ? '#D63384' : '#6C757D' }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary="Tables"
-                            sx={{
-                                color: selectedItem === 'tables' ? '#000' : '#6C757D',
-                                fontWeight: selectedItem === 'tables' ? 'bold' : 'normal',
-                            }}
-                        />
-                    </ListItem>
+                    {/* Collapsible Section for Management Items */}
+                    <Collapse in={isManagementOpen} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItem
+                                component={Link}
+                                to="/management/report"
+                                onClick={() => handleSelect(Pages.ReportPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.ReportPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <TableChartIcon sx={{ color: selectedItem === Pages.ReportPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Report Page"
+                                    sx={{
+                                        color: selectedItem === Pages.ReportPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.ReportPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
 
-                    <ListItem
-                        component={Link}
-                        to="/billing"
-                        onClick={() => handleSelect(Pages.Billing)}
-                        sx={{
-                            marginBottom: '10px',
-                            backgroundColor: selectedItem === 'billing' ? '#f0f0f0' : 'transparent',
-                            '&:hover': {
-                                backgroundColor: '#f0f0f0',
-                            },
-                        }}
-                    >
-                        <ListItemIcon>
-                            <ReceiptIcon sx={{ color: selectedItem === 'billing' ? '#D63384' : '#6C757D' }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary="Billing"
-                            sx={{
-                                color: selectedItem === 'billing' ? '#000' : '#6C757D',
-                                fontWeight: selectedItem === 'billing' ? 'bold' : 'normal',
-                            }}
-                        />
-                    </ListItem>
+                            <ListItem
+                                component={Link}
+                                to="/management/manager"
+                                onClick={() => handleSelect(Pages.ManagerPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.ManagerPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <ReceiptIcon sx={{ color: selectedItem === Pages.ManagerPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Manager"
+                                    sx={{
+                                        color: selectedItem === Pages.ManagerPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.ManagerPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
+
+                            <ListItem
+                                component={Link}
+                                to="/management/project"
+                                onClick={() => handleSelect(Pages.ProjectPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.ProjectPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <DashboardIcon sx={{ color: selectedItem === Pages.ProjectPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Project"
+                                    sx={{
+                                        color: selectedItem === Pages.ProjectPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.ProjectPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
+                        </List>
+                    </Collapse>
                 </List>
             </Box>
         </Drawer>

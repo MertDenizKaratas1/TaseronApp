@@ -1,5 +1,5 @@
 export enum Pages {
-    Dashboard = 'dashboard',
-    Tables = 'tables',
-    Billing = 'billing'
+    ReportPage = '/management/report',
+    ProjectPage = '/management/project',
+    ManagerPage = '/management/manager'
 } 
