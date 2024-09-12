@@ -11,6 +11,7 @@ import ProjectManagement from './pages/ProjectManagement';
 import ReportManagement from './pages/RaportManagement';
 import ManagementLayout from './pages/layouts/ManagementLayout';
 import OfferManagement from './pages/OfferManagement';
+import SignUp from './pages/SignUp';
 
 const MainLayout = () => {
   return (
@@ -30,6 +31,7 @@ const MainLayout = () => {
 
             {/* Other routes */}
             <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
       </div>
@@ -42,6 +44,7 @@ function App() {
   return (
     <Routes>
       <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route path="/*" element={<MainLayout />} />
     </Routes>
   );
