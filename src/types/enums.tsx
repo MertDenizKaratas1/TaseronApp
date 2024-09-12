@@ -1,5 +1,7 @@
 export enum Pages {
     ReportPage = '/management/report',
     ProjectPage = '/management/project',
-    ManagerPage = '/management/manager'
+    ManagerPage = '/management/manager',
+    OfferPage = '/management/offer',
+
 } 

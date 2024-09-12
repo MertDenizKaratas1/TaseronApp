@@ -134,6 +134,30 @@ const Navbar = () => {
                                     }}
                                 />
                             </ListItem>
+                            <ListItem
+                                component={Link}
+                                to="/management/offer"
+                                onClick={() => handleSelect(Pages.OfferPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.OfferPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <DashboardIcon sx={{ color: selectedItem === Pages.OfferPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Offer"
+                                    sx={{
+                                        color: selectedItem === Pages.OfferPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.OfferPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
                         </List>
                     </Collapse>
                 </List>

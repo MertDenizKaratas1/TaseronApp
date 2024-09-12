@@ -10,6 +10,7 @@ import ManagerManagement from './pages/ManagerManagement';
 import ProjectManagement from './pages/ProjectManagement';
 import ReportManagement from './pages/RaportManagement';
 import ManagementLayout from './pages/layouts/ManagementLayout';
+import OfferManagement from './pages/OfferManagement';
 
 const MainLayout = () => {
   return (
@@ -24,6 +25,7 @@ const MainLayout = () => {
               <Route path="manager" element={<ManagerManagement />} />
               <Route path="project" element={<ProjectManagement />} />
               <Route path="report" element={<ReportManagement />} />
+              <Route path="offer" element={<OfferManagement />}/>
             </Route>
 
             {/* Other routes */}
