@@ -183,6 +183,30 @@ const Navbar = () => {
                                     }}
                                 />
                             </ListItem>
+                            <ListItem
+                                component={Link}
+                                to="/management/previous-submissions"
+                                onClick={() => handleSelect(Pages.PreviousSubmissionsPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.PreviousSubmissionsPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <DashboardIcon sx={{ color: selectedItem === Pages.PreviousSubmissionsPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Previous Submissions"
+                                    sx={{
+                                        color: selectedItem === Pages.PreviousSubmissionsPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.PreviousSubmissionsPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
                         </List>
                     </Collapse>
                 </List>

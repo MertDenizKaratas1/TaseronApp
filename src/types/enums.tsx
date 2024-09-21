@@ -4,5 +4,6 @@ export enum Pages {
     ManagerPage = '/management/manager',
     OfferPage = '/management/offer',
     ContractorPage = '/management/contractor',
+    PreviousSubmissionsPage='/management/previous-submissions'
 
 } 
