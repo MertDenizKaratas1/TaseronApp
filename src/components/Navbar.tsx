@@ -158,6 +158,31 @@ const Navbar = () => {
                                     }}
                                 />
                             </ListItem>
+
+                            <ListItem
+                                component={Link}
+                                to="/management/contractor"
+                                onClick={() => handleSelect(Pages.ContractorPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.ContractorPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <DashboardIcon sx={{ color: selectedItem === Pages.ContractorPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Contractor"
+                                    sx={{
+                                        color: selectedItem === Pages.ContractorPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.ContractorPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
                         </List>
                     </Collapse>
                 </List>

@@ -12,6 +12,7 @@ import ReportManagement from './pages/RaportManagement';
 import ManagementLayout from './pages/layouts/ManagementLayout';
 import OfferManagement from './pages/OfferManagement';
 import SignUp from './pages/SignUp';
+import ContractorManagement from './pages/ContractorManagement';
 
 const MainLayout = () => {
   return (
@@ -27,6 +28,8 @@ const MainLayout = () => {
               <Route path="project" element={<ProjectManagement />} />
               <Route path="report" element={<ReportManagement />} />
               <Route path="offer" element={<OfferManagement />}/>
+              <Route path="contractor" element={<ContractorManagement />}/>
+
             </Route>
 
             {/* Other routes */}
