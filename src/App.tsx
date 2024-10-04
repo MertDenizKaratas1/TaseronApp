@@ -14,6 +14,7 @@ import OfferManagement from './pages/OfferManagement';
 import SignUp from './pages/SignUp';
 import ContractorManagement from './pages/ContractorManagement';
 import PreviousSubmissionsManagement from './pages/PreviousSubmissionsManagement';
+import PublicTenderPage from './pages/PublicTenderPage';
 
 const MainLayout = () => {
   return (
@@ -31,6 +32,8 @@ const MainLayout = () => {
               <Route path="offer" element={<OfferManagement />} />
               <Route path="contractor" element={<ContractorManagement />} />
               <Route path="previous-submissions" element={<PreviousSubmissionsManagement />} />
+              <Route path="Public-tender" element={<PublicTenderPage />} />
+
             </Route>
 
             {/* Other routes */}

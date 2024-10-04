@@ -207,6 +207,30 @@ const Navbar = () => {
                                     }}
                                 />
                             </ListItem>
+                            <ListItem
+                                component={Link}
+                                to="/management/public-tender"
+                                onClick={() => handleSelect(Pages.PublicTenderPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.PublicTenderPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <DashboardIcon sx={{ color: selectedItem === Pages.PublicTenderPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Public Tender"
+                                    sx={{
+                                        color: selectedItem === Pages.PublicTenderPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.PublicTenderPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
                         </List>
                     </Collapse>
                 </List>
