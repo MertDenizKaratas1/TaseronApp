@@ -231,6 +231,32 @@ const Navbar = () => {
                                     }}
                                 />
                             </ListItem>
+
+                            <ListItem
+                                component={Link}
+                                to="/management/search-company-resources"
+                                onClick={() => handleSelect(Pages.SearchCompanyResourcesPage)}
+                                sx={{
+                                    pl: 4,
+                                    marginBottom: '10px',
+                                    backgroundColor: selectedItem === Pages.SearchCompanyResourcesPage ? '#f0f0f0' : 'transparent',
+                                    '&:hover': {
+                                        backgroundColor: '#f0f0f0',
+                                    },
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <DashboardIcon sx={{ color: selectedItem === Pages.SearchCompanyResourcesPage ? '#D63384' : '#6C757D' }} />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Search Company Resources"
+                                    sx={{
+                                        color: selectedItem === Pages.SearchCompanyResourcesPage ? '#000' : '#6C757D',
+                                        fontWeight: selectedItem === Pages.SearchCompanyResourcesPage ? 'bold' : 'normal',
+                                    }}
+                                />
+                            </ListItem>
+
                         </List>
                     </Collapse>
                 </List>

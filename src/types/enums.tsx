@@ -1,4 +1,4 @@
-import PublicTenderPage from "../pages/PublicTenderPage";
+import PublicTenderPage from "../pages/PublicTender";
 
 export enum Pages {
     ReportPage = '/management/report',
@@ -7,6 +7,7 @@ export enum Pages {
     OfferPage = '/management/offer',
     ContractorPage = '/management/contractor',
     PreviousSubmissionsPage='/management/previous-submissions',
-    PublicTenderPage='/management/public-tender'
+    PublicTenderPage='/management/public-tender',
+    SearchCompanyResourcesPage='/management/search-company-resources'
 
 } 

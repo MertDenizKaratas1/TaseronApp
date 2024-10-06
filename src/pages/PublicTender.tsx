@@ -57,7 +57,7 @@ const tenderDummyData: ITender[] = [
 
 const sheetStyle = { width: '30vw', height: '40vh', borderRadius: 'md', p: 3, boxShadow: 'lg' };
 
-const PublicTenderPage = () => {
+const PublicTender = () => {
     const [isOpenDetailModal, setIsOpenDetailModal] = useState<boolean>(false);
     const [selectedTender, setSelectedTender] = useState<ITender | null>(null);
     const [isOpenContactModal, setIsOpenContactModal] = useState<boolean>(false);
@@ -70,7 +70,7 @@ const PublicTenderPage = () => {
     return (
         <Box sx={{ padding: '20px' }}>
             <Typography variant="h4" sx={{ marginBottom: '20px' }}>
-                Contractor Management
+                Public Tender
             </Typography>
 
             {/* Table Controls */}
@@ -193,4 +193,4 @@ const PublicTenderPage = () => {
     );
 };
 
-export default PublicTenderPage;
+export default PublicTender;
